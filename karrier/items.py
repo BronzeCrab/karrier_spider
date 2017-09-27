@@ -11,8 +11,4 @@ import scrapy
 class KarrierItem(scrapy.Item):
     name = scrapy.Field()
     url_to_pdf = scrapy.Field()
-    date = scrapy.Field()
-    address = scrapy.Field()
-    stellenumfang = scrapy.Field()
-    platze = scrapy.Field()
-    befristung = scrapy.Field()
+    text = scrapy.Field()
