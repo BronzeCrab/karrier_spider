@@ -32,7 +32,7 @@ class KarSpider(scrapy.Spider):
             # print(urllib.parse.urljoin(self.base_url, details_page_link))
             item = KarrierItem()
             item['name'] = div.h3.text
-            item['text'] = div.text
+            item['text'] = div.text.strip()
             item['url_to_pdf'] = urllib.parse.urljoin(
                 self.base_url, div.find_all("a", "pdf")[0].attrs['href'])
             yield response.follow(
