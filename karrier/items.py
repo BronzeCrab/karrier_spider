@@ -10,5 +10,8 @@ import scrapy
 
 class KarrierItem(scrapy.Item):
     name = scrapy.Field()
+    place = scrapy.Field()
     url_to_pdf = scrapy.Field()
     text = scrapy.Field()
+    einstellung = scrapy.Field()
+    additional_text = scrapy.Field()
