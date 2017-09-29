@@ -102,6 +102,29 @@ class KarSpider(scrapy.Spider):
         soup = BeautifulSoup(response.body, "lxml")
         div = soup.find_all("div", {"class": "ausbildungsplaetze"})[0]
         item['place'] = div.h3.text
+
+        # parse detailed info:
+        div_text = div.text
+        div_text = div_text.replace('\r', ' ').replace(
+            '\n', ' ').replace('\t', ' ')
+
+        # meldeaktenzeichen
+        match = re.search(
+            r"Meldeaktenzeichen:(.*)Stellenumfang", div_text)
+        if match:
+            item['meldeaktenzeichen'] = match.group(1).strip()
+        else:
+            print ("Warning, no meldeaktenzeichen match")
+            sys.exit()
+        # bewerbungsschluss
+        match = re.search(
+            r"Bewerbungsschluss:(.*)Meldeaktenzeichen", div_text)
+        if match:
+            item['bewerbungsschluss'] = match.group(1).strip()
+        else:
+            print ("Warning, no bewerbungsschluss match")
+            sys.exit()
+
         table = soup.find_all("table", {"class": "listeBg3"})[0]
         item['additional_text'] = table.text
         div = soup.find_all("div", {"class": "Stelle"})[0]

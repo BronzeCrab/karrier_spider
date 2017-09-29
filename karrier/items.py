@@ -20,5 +20,7 @@ class KarrierItem(scrapy.Item):
     url_to_pdf = scrapy.Field()
     text = scrapy.Field()
     place = scrapy.Field()
+    meldeaktenzeichen = scrapy.Field()
+    bewerbungsschluss = scrapy.Field()
     additional_text = scrapy.Field()
     detailed_data = scrapy.Field()
