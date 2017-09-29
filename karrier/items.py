@@ -22,5 +22,6 @@ class KarrierItem(scrapy.Item):
     place = scrapy.Field()
     meldeaktenzeichen = scrapy.Field()
     bewerbungsschluss = scrapy.Field()
+    detail_heading = scrapy.Field()
     additional_text = scrapy.Field()
     detailed_data = scrapy.Field()

@@ -128,5 +128,6 @@ class KarSpider(scrapy.Spider):
         table = soup.find_all("table", {"class": "listeBg3"})[0]
         item['additional_text'] = table.text
         div = soup.find_all("div", {"class": "Stelle"})[0]
+        item['detail_heading'] = div.h5.text
         item['detailed_data'] = div.text
         yield item
